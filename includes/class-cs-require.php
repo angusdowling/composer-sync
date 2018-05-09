@@ -4,7 +4,7 @@
  *
  * @author      Angus Dowling
  * @package     CS
- * @version     1.0.0
+ * @version     1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -57,17 +57,25 @@ class CS_Require {
 	}
 
 	/**
+	 * Check if plugin exists in composer file
+	 * 
+	 * @since 1.0.1
+	 */
+	private function exists($plugin_name) {
+		return is_null ( shell_exec("composer show wpackagist-plugin/{$plugin_name}") );
+	}
+
+	/**
 	 * Add plugin to composer
 	 * 
 	 * @since 1.0.0
 	 */
 	public function cs_require( $args ) {
+		$plugin_name = $args->result['destination_name'];
+
 		chdir( $this->get_path() );
 
-		$plugin_name   = $args->result['destination_name'];
-		$plugin_exists = shell_exec("composer show wpackagist-plugin/{$plugin_name}");
-
-		if( is_null( $plugin_exists ) ) {
+		if( $this->exists( $plugin_name ) ) {
 			$output = shell_exec("composer require wpackagist-plugin/{$plugin_name}:*");
 		}
 	}
@@ -78,12 +86,11 @@ class CS_Require {
 	 * @since 1.0.0
 	 */
 	public function cs_remove( $file ) {
+		$plugin_name = explode( "/", $file )[0];
+
 		chdir( $this->get_path() );
 
-		$plugin_name   = explode( "/", $file )[0];
-		$plugin_exists = shell_exec("composer show wpackagist-plugin/{$plugin_name}");
-
-		if( !is_null( $plugin_exists ) ) {
+		if( $this->exists( $plugin_name ) ) {
 			$output = shell_exec("composer remove wpackagist-plugin/{$plugin_name}");
 		}
 

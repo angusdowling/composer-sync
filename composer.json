@@ -1,7 +1,7 @@
 {
 	"name": "yokedevelopers/composer-sync",
 	"description": "Sync composer requirements with installing plugins via the CMS.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "wordpress-plugin",
 	"keywords": ["wordpress", "mailchimp", "advanced-forms"],
 	"license": "MIT",

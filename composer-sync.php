@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Composer Sync
  * Description: Sync composer requirements with installing plugins via the CMS
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Angus Dowling
  *
  * Text Domain: composer-sync

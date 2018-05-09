@@ -19,7 +19,7 @@ final class CS {
 	 *
 	 * @var string
 	 */
-	public $version = '1.0.0';
+	public $version = '1.0.1';
 
 	/**
 	 * The single instance of the class.
@@ -93,6 +93,7 @@ final class CS {
 	 * Get the plugin url.
 	 *
 	 * @return string
+	 * @since 1.0.0
 	 */
 	public function plugin_url() {
 		return untrailingslashit( plugins_url( '/', CS_PLUGIN_FILE ) );
@@ -102,6 +103,7 @@ final class CS {
 	 * Get the plugin path.
 	 *
 	 * @return string
+	 * @since 1.0.0
 	 */
 	public function plugin_path() {
 		return untrailingslashit( plugin_dir_path( CS_PLUGIN_FILE ) );
